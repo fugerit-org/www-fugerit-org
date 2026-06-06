@@ -90,6 +90,10 @@ For `www.fugerit.org` to resolve to GitHub Pages, configure these DNS records:
 
 Then in the GitHub repository settings → Pages → Custom domain → enter `www.fugerit.org`.
 
+## 📋 Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md) for the full history of changes.
+
 ## 📄 License
 
 Apache-2.0 © Fugerit Coding Org
