@@ -1,0 +1,197 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+<PageLayout
+  title="Tools"
+  description="Developer tools by Fugerit Coding Org — OpenAPI doc generation, SQL export, GraalVM helpers and more."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge">Developer Tools</span>
+      <h1>Tools</h1>
+      <p>Purpose-built command-line tools and Maven plugins that solve specific developer problems.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="tools-detail-grid">
+
+        <article class="card tool-detail" id="tool-openapi-doc">
+          <div class="tool-detail__header">
+            <div class="tool-num">2.2</div>
+            <div>
+              <h2><a href="https://github.com/fugerit-org/openapi-doc-tool" target="_blank" rel="noopener noreferrer">OpenAPI Doc Tool</a></h2>
+              <p class="tool-detail__sub">YAML → Document</p>
+            </div>
+          </div>
+          <p>
+            Parses OpenAPI/Swagger YAML specification files and produces formatted documentation
+            using the Venus (fj-doc) library. Supports all output formats: PDF, HTML, XLSX, and more.
+            A dedicated <a href="https://github.com/fugerit-org/openapi-doc-maven-plugin" target="_blank" rel="noopener noreferrer">Maven plugin</a> is also available for CI/CD integration.
+          </p>
+          <div class="tool-detail__tags">
+            <span class="badge">OpenAPI</span>
+            <span class="badge">Swagger</span>
+            <span class="badge">YAML</span>
+            <span class="badge">PDF</span>
+            <span class="badge">Maven Plugin</span>
+          </div>
+          <div class="tool-detail__links">
+            <a href="https://github.com/fugerit-org/openapi-doc-tool" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:0.85rem;" id="openapi-github-btn">GitHub ↗</a>
+            <a href="https://github.com/fugerit-org/openapi-doc-maven-plugin" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size:0.85rem;" id="openapi-plugin-btn">Maven Plugin ↗</a>
+            <a href="https://mvnrepository.com/artifact/org.fugerit.java/openapi-doc-tool" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="font-size:0.85rem;" id="openapi-maven-btn">Maven Central ↗</a>
+          </div>
+        </article>
+
+        <article class="card tool-detail" id="tool-query-export-detail">
+          <div class="tool-detail__header">
+            <div class="tool-num">2.3</div>
+            <div>
+              <h2><a href="https://github.com/fugerit-org/query-export-tool" target="_blank" rel="noopener noreferrer">Query Export Tool</a></h2>
+              <p class="tool-detail__sub">SQL → CSV / XLS / HTML</p>
+            </div>
+          </div>
+          <p>
+            A simple but powerful tool for exporting the results of SQL queries into multiple formats:
+            CSV, HTML, XLS, and XLSX. Ideal for ad-hoc data exports, reports, and sharing database
+            data with non-technical users.
+          </p>
+          <div class="tool-detail__tags">
+            <span class="badge">SQL</span>
+            <span class="badge">CSV</span>
+            <span class="badge">XLS</span>
+            <span class="badge">XLSX</span>
+            <span class="badge">HTML</span>
+          </div>
+          <div class="tool-detail__links">
+            <a href="https://github.com/fugerit-org/query-export-tool" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:0.85rem;" id="query-export-github-btn">GitHub ↗</a>
+            <a href="https://mvnrepository.com/artifact/org.fugerit.java/query-export-tool" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="font-size:0.85rem;" id="query-export-maven-btn">Maven Central ↗</a>
+          </div>
+        </article>
+
+        <article class="card tool-detail" id="tool-graalvm-detail">
+          <div class="tool-detail__header">
+            <div class="tool-num">2.1</div>
+            <div>
+              <h2><a href="https://github.com/fugerit-org/native-helper-graalvm" target="_blank" rel="noopener noreferrer">Native Helper GraalVM</a></h2>
+              <p class="tool-detail__sub">GraalVM Native Image Metadata</p>
+            </div>
+          </div>
+          <p>
+            Simplifies the creation of GraalVM native image metadata (reflection config, resource config, etc.)
+            required for compiling Java applications into native executables. Reduces configuration boilerplate
+            and speeds up the native image build process significantly.
+          </p>
+          <div class="tool-detail__tags">
+            <span class="badge">GraalVM</span>
+            <span class="badge">Native Image</span>
+            <span class="badge">Reflection</span>
+            <span class="badge">Performance</span>
+          </div>
+          <div class="tool-detail__links">
+            <a href="https://github.com/fugerit-org/native-helper-graalvm" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:0.85rem;" id="graalvm-github-btn">GitHub ↗</a>
+            <a href="https://mvnrepository.com/artifact/org.fugerit.java/native-helper-graalvm" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="font-size:0.85rem;" id="graalvm-maven-btn">Maven Central ↗</a>
+          </div>
+        </article>
+
+        <article class="card tool-detail" id="tool-issue-export-detail">
+          <div class="tool-detail__header">
+            <div class="tool-num">2.4</div>
+            <div>
+              <h2><a href="https://github.com/fugerit-org/github-issue-export" target="_blank" rel="noopener noreferrer">GitHub Issue Export</a></h2>
+              <p class="tool-detail__sub">GitHub Issues → XLS Report</p>
+            </div>
+          </div>
+          <p>
+            Connects to the GitHub API to export a repository's issue list into a structured XLS report.
+            Useful for project tracking, sprint planning reviews, and offline analysis of GitHub issues.
+          </p>
+          <div class="tool-detail__tags">
+            <span class="badge">GitHub API</span>
+            <span class="badge">XLS</span>
+            <span class="badge">Issues</span>
+            <span class="badge">Reporting</span>
+          </div>
+          <div class="tool-detail__links">
+            <a href="https://github.com/fugerit-org/github-issue-export" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:0.85rem;" id="issue-export-github-btn">GitHub ↗</a>
+            <a href="https://mvnrepository.com/artifact/org.fugerit.java/github-issue-export" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="font-size:0.85rem;" id="issue-export-maven-btn">Maven Central ↗</a>
+          </div>
+        </article>
+
+        <article class="card tool-detail" id="tool-freemarker-native">
+          <div class="tool-detail__header">
+            <div class="tool-num">✦</div>
+            <div>
+              <h2><a href="https://github.com/fugerit-org/freemarker-native" target="_blank" rel="noopener noreferrer">Freemarker Native</a></h2>
+              <p class="tool-detail__sub">GraalVM Support for Apache Freemarker</p>
+            </div>
+          </div>
+          <p>
+            Adds GraalVM native image compatibility to Apache Freemarker. Enables
+            Freemarker-based templating (used extensively by Venus/fj-doc) in native
+            compiled applications without reflection issues.
+          </p>
+          <div class="tool-detail__tags">
+            <span class="badge">Freemarker</span>
+            <span class="badge">GraalVM</span>
+            <span class="badge">Native Image</span>
+          </div>
+          <div class="tool-detail__links">
+            <a href="https://github.com/fugerit-org/freemarker-native" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:0.85rem;" id="freemarker-native-btn">GitHub ↗</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .page-hero {
+    padding: 9rem 0 4rem;
+    background: var(--gradient-hero);
+    border-bottom: 1px solid var(--clr-border);
+    text-align: center;
+  }
+  .page-hero .badge { margin-bottom: 1rem; }
+  .page-hero h1 { color: var(--clr-white); margin-bottom: 1rem; }
+  .page-hero p { font-size: 1.05rem; max-width: 520px; margin: 0 auto; }
+
+  .tools-detail-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .tool-detail { display: flex; flex-direction: column; gap: 1rem; }
+
+  .tool-detail__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .tool-num {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--clr-accent);
+    background: rgba(0,168,150,0.12);
+    padding: 0.3rem 0.6rem;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+
+  .tool-detail__header h2 { font-size: 1.2rem; color: var(--clr-white); margin-bottom: 0.2rem; }
+  .tool-detail__header h2 a { color: inherit; }
+  .tool-detail__header h2 a:hover { color: var(--clr-accent); }
+
+  .tool-detail__sub { font-size: 0.8rem; color: var(--clr-text-dim); }
+
+  .tool-detail__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  .tool-detail__links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .tool-detail p { font-size: 0.92rem; }
+
+  .tool-detail p a { color: var(--clr-accent); }
+  .tool-detail p a:hover { text-decoration: underline; }
+</style>

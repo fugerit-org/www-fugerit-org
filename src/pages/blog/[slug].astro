@@ -1,0 +1,167 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await Astro.glob('../../content/blog/*.md');
+  return posts.map(post => ({
+    params: { slug: post.file.split('/').pop().replace('.md', '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, author, tags } = post.frontmatter;
+const { Content } = post;
+
+const formattedDate = new Date(pubDate).toLocaleDateString('en-GB', {
+  day: 'numeric', month: 'long', year: 'numeric'
+});
+---
+
+<PageLayout title={title} description={description}>
+  <article class="blog-post">
+    <header class="blog-post__header">
+      <div class="container">
+        <a href="/blog/" class="blog-post__back">← Back to Blog</a>
+        <div class="blog-post__meta">
+          <time datetime={pubDate} class="blog-post__date">{formattedDate}</time>
+          <span class="blog-post__author">by {author}</span>
+        </div>
+        <h1 class="blog-post__title">{title}</h1>
+        <p class="blog-post__desc">{description}</p>
+        {tags && (
+          <div class="blog-post__tags">
+            {tags.map((tag: string) => <span class="badge">{tag}</span>)}
+          </div>
+        )}
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="blog-post__body prose">
+        <Content />
+      </div>
+    </div>
+  </article>
+</PageLayout>
+
+<style>
+  .blog-post__header {
+    padding: 9rem 0 3.5rem;
+    background: var(--gradient-hero);
+    border-bottom: 1px solid var(--clr-border);
+  }
+
+  .blog-post__back {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--clr-text-dim);
+    margin-bottom: 1.5rem;
+    transition: color var(--transition);
+  }
+  .blog-post__back:hover { color: var(--clr-accent); }
+
+  .blog-post__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-post__date {
+    font-size: 0.82rem;
+    color: var(--clr-accent);
+    font-weight: 600;
+    font-family: var(--font-mono);
+  }
+
+  .blog-post__author { font-size: 0.8rem; color: var(--clr-text-dim); }
+
+  .blog-post__title {
+    color: var(--clr-white);
+    max-width: 720px;
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-post__desc {
+    font-size: 1.05rem;
+    max-width: 640px;
+    margin-bottom: 1.25rem;
+  }
+
+  .blog-post__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  .blog-post__body {
+    max-width: 740px;
+    margin: 3rem auto 5rem;
+  }
+
+  /* Prose styles */
+  .prose h2 {
+    font-size: 1.5rem;
+    color: var(--clr-white);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--clr-border);
+  }
+
+  .prose h3 {
+    font-size: 1.15rem;
+    color: var(--clr-white);
+    margin: 1.75rem 0 0.75rem;
+  }
+
+  .prose p {
+    margin-bottom: 1.25rem;
+    font-size: 0.97rem;
+    line-height: 1.85;
+  }
+
+  .prose a { color: var(--clr-accent); }
+  .prose a:hover { text-decoration: underline; }
+
+  .prose ul, .prose ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .prose li { font-size: 0.97rem; color: var(--clr-text-dim); }
+
+  .prose strong { color: var(--clr-text); }
+
+  .prose code {
+    background: rgba(0,168,150,0.1);
+    color: var(--clr-teal-400);
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    font-size: 0.85em;
+  }
+
+  .prose pre {
+    background: #0c1c28;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  .prose pre code {
+    background: none;
+    color: var(--clr-text);
+    padding: 0;
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+
+  .prose blockquote {
+    border-left: 3px solid var(--clr-accent);
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--clr-text-dim);
+  }
+</style>

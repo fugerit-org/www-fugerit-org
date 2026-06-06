@@ -1,0 +1,587 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+<PageLayout
+  title="Home"
+  description="Fugerit Coding Org — Open source Java libraries and tools to make development simpler, faster, and more reliable."
+>
+  <!-- ===== HERO ===== -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero__glow glow-bg"></div>
+    <div class="hero__glow-2 glow-bg"></div>
+    <div class="container hero__inner">
+      <div class="hero__badge animate-fade-up">
+        <span class="badge">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
+          Open Source · Apache-2.0
+        </span>
+      </div>
+      <h1 id="hero-heading" class="hero__title animate-fade-up delay-1">
+        Making Java development<br/>
+        <span class="gradient-text">simpler &amp; faster</span>
+      </h1>
+      <p class="hero__subtitle animate-fade-up delay-2">
+        A curated collection of open source Java libraries and tools by
+        <strong>Fugerit Coding Org</strong>. From document generation to code scaffolding —
+        build better software with less boilerplate.
+      </p>
+      <div class="hero__cta animate-fade-up delay-3">
+        <a href="/projects/" class="btn btn-primary" id="explore-projects-btn">
+          Explore Projects
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://github.com/fugerit-org" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="github-hero-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          113 Repositories
+        </a>
+      </div>
+
+      <!-- Stats row -->
+      <div class="hero__stats animate-fade-up delay-4">
+        <div class="hero__stat">
+          <span class="hero__stat-num gradient-text">4</span>
+          <span class="hero__stat-label">Core Libraries</span>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-num gradient-text">113</span>
+          <span class="hero__stat-label">Repositories</span>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-num gradient-text">29+</span>
+          <span class="hero__stat-label">GitHub Stars (fj-doc)</span>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-num gradient-text">Java 8+</span>
+          <span class="hero__stat-label">Compatibility</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CORE LIBRARIES ===== -->
+  <section class="section" aria-labelledby="libraries-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Core Libraries</span>
+        <h2 id="libraries-heading">The Fugerit Ecosystem</h2>
+        <p>Four foundational libraries that form the backbone of the Fugerit Java development ecosystem.</p>
+      </div>
+
+      <div class="libs-grid">
+        <!-- Venus / fj-doc -->
+        <article class="card lib-card" id="lib-fj-doc">
+          <div class="lib-card__icon" style="--icon-color: #00a896;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="lib-card__name">
+            <span class="lib-card__codename">Venus</span>
+            <code class="lib-card__artifact">fj-doc</code>
+          </div>
+          <p class="lib-card__desc">
+            A powerful document generation framework supporting PDF, XLSX, HTML, DOCX and more.
+            Uses Apache FOP, Apache POI and other proven libraries. Ideal for reports, invoices, and data exports.
+          </p>
+          <div class="lib-card__tags">
+            <span class="badge">PDF</span>
+            <span class="badge">XLSX</span>
+            <span class="badge">Freemarker</span>
+          </div>
+          <div class="lib-card__footer">
+            <a href="https://github.com/fugerit-org/fj-doc" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="font-size:0.85rem;padding:0.4rem 0.7rem;" id="fj-doc-github-btn">
+              GitHub ↗
+            </a>
+            <span class="lib-card__stars">⭐ 29</span>
+          </div>
+        </article>
+
+        <!-- Jupiter / fj-lib -->
+        <article class="card lib-card" id="lib-fj-lib">
+          <div class="lib-card__icon" style="--icon-color: #028090;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="lib-card__name">
+            <span class="lib-card__codename">Jupiter</span>
+            <code class="lib-card__artifact">fj-lib</code>
+          </div>
+          <p class="lib-card__desc">
+            Core Java utility library covering configuration loading, IO operations, i18n, logging
+            and common language primitives. Compatible with Java 8+, minimal external dependencies.
+          </p>
+          <div class="lib-card__tags">
+            <span class="badge">Java 8+</span>
+            <span class="badge">IO</span>
+            <span class="badge">i18n</span>
+          </div>
+          <div class="lib-card__footer">
+            <a href="https://github.com/fugerit-org/fj-lib" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="font-size:0.85rem;padding:0.4rem 0.7rem;" id="fj-lib-github-btn">
+              GitHub ↗
+            </a>
+            <span class="lib-card__stars">⭐ 8</span>
+          </div>
+        </article>
+
+        <!-- Mars / fj-daogen -->
+        <article class="card lib-card" id="lib-fj-daogen">
+          <div class="lib-card__icon" style="--icon-color: #016070;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div class="lib-card__name">
+            <span class="lib-card__codename">Mars</span>
+            <code class="lib-card__artifact">fj-daogen</code>
+          </div>
+          <p class="lib-card__desc">
+            Code generation library for creating entity beans and data access layers.
+            Supports custom generators for different persistence strategies and behaviors.
+          </p>
+          <div class="lib-card__tags">
+            <span class="badge">Codegen</span>
+            <span class="badge">DAO</span>
+            <span class="badge">Maven</span>
+          </div>
+          <div class="lib-card__footer">
+            <a href="https://github.com/fugerit-org/fj-daogen" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="font-size:0.85rem;padding:0.4rem 0.7rem;" id="fj-daogen-github-btn">
+              GitHub ↗
+            </a>
+            <span class="lib-card__stars">⭐ 6</span>
+          </div>
+        </article>
+
+        <!-- Universe / fj-universe -->
+        <article class="card lib-card" id="lib-fj-universe">
+          <div class="lib-card__icon" style="--icon-color: #00bfa5;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></svg>
+          </div>
+          <div class="lib-card__name">
+            <span class="lib-card__codename">Universe</span>
+            <code class="lib-card__artifact">fj-universe</code>
+          </div>
+          <p class="lib-card__desc">
+            A unified BOM (Bill of Materials) for the entire Fugerit ecosystem. Import all
+            Fugerit dependencies at once with consistent, tested version management.
+          </p>
+          <div class="lib-card__tags">
+            <span class="badge">BOM</span>
+            <span class="badge">Maven</span>
+            <span class="badge">Dependency Management</span>
+          </div>
+          <div class="lib-card__footer">
+            <a href="https://github.com/fugerit-org/fj-universe" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="font-size:0.85rem;padding:0.4rem 0.7rem;" id="fj-universe-github-btn">
+              GitHub ↗
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="/projects/" class="btn btn-outline" id="all-projects-btn">View All Projects →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUALITY SECTION ===== -->
+  <section class="section section-alt" aria-labelledby="quality-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Quality First</span>
+        <h2 id="quality-heading">Built with confidence</h2>
+        <p>Every library is continuously monitored for code quality, security, and reliability.</p>
+      </div>
+      <div class="quality-grid">
+        <div class="quality-item">
+          <div class="quality-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>SonarCloud</h3>
+          <p>Continuous static analysis and security scanning on every commit.</p>
+          <a href="https://sonarcloud.io/organizations/fugerit-org/projects" target="_blank" rel="noopener noreferrer" class="quality-link" id="sonarcloud-link">View Reports →</a>
+        </div>
+        <div class="quality-item">
+          <div class="quality-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <h3>Apache-2.0</h3>
+          <p>All libraries released under the permissive Apache License 2.0 — free for any use.</p>
+          <a href="https://opensource.org/licenses/Apache-2.0" target="_blank" rel="noopener noreferrer" class="quality-link" id="apache-license-link">License Details →</a>
+        </div>
+        <div class="quality-item">
+          <div class="quality-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Maven Central</h3>
+          <p>All artifacts published to Maven Central — just add a dependency and go.</p>
+          <a href="https://repo1.maven.org/maven2/org/fugerit/java/" target="_blank" rel="noopener noreferrer" class="quality-link" id="maven-central-link">Browse Artifacts →</a>
+        </div>
+        <div class="quality-item">
+          <div class="quality-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3>GraalVM Native</h3>
+          <p>Support for GraalVM native image compilation for ultra-fast startup times.</p>
+          <a href="https://github.com/fugerit-org/native-helper-graalvm" target="_blank" rel="noopener noreferrer" class="quality-link" id="graalvm-link">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TOOLS PREVIEW ===== -->
+  <section class="section" aria-labelledby="tools-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Tools</span>
+        <h2 id="tools-heading">Developer Tooling</h2>
+        <p>Purpose-built tools that complement the core libraries and solve real-world problems.</p>
+      </div>
+      <div class="tools-grid">
+        <a href="https://github.com/fugerit-org/openapi-doc-tool" target="_blank" rel="noopener noreferrer" class="tool-card" id="tool-openapi">
+          <div class="tool-card__header">
+            <span class="tool-card__number">2.2</span>
+            <h3>OpenAPI Doc Tool</h3>
+          </div>
+          <p>Generate documentation from OpenAPI/Swagger YAML specs using the Venus library.</p>
+        </a>
+        <a href="https://github.com/fugerit-org/query-export-tool" target="_blank" rel="noopener noreferrer" class="tool-card" id="tool-query-export">
+          <div class="tool-card__header">
+            <span class="tool-card__number">2.3</span>
+            <h3>Query Export Tool</h3>
+          </div>
+          <p>Export SQL query results to CSV, HTML, XLS and XLSX with minimal configuration.</p>
+        </a>
+        <a href="https://github.com/fugerit-org/native-helper-graalvm" target="_blank" rel="noopener noreferrer" class="tool-card" id="tool-graalvm">
+          <div class="tool-card__header">
+            <span class="tool-card__number">2.1</span>
+            <h3>GraalVM Native Helper</h3>
+          </div>
+          <p>Automate GraalVM native image metadata generation for your Java applications.</p>
+        </a>
+        <a href="https://github.com/fugerit-org/github-issue-export" target="_blank" rel="noopener noreferrer" class="tool-card" id="tool-issue-export">
+          <div class="tool-card__header">
+            <span class="tool-card__number">2.4</span>
+            <h3>GitHub Issue Export</h3>
+          </div>
+          <p>Export GitHub repository issues to XLS reports via the GitHub API.</p>
+        </a>
+      </div>
+      <div class="text-center mt-4">
+        <a href="/tools/" class="btn btn-outline" id="all-tools-btn">View All Tools →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THANKS SECTION ===== -->
+  <section class="section section-alt" aria-labelledby="thanks-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Community</span>
+        <h2 id="thanks-heading">Special Thanks</h2>
+        <p>Standing on the shoulders of giants — we are grateful to these amazing organizations.</p>
+      </div>
+      <div class="thanks-grid">
+        <a href="https://www.jetbrains.com/" target="_blank" rel="noopener noreferrer" class="thanks-card" id="thanks-jetbrains">
+          <div class="thanks-card__inner">
+            <strong>JetBrains</strong>
+            <p>Open Source Development support via the Community License program.</p>
+          </div>
+        </a>
+        <a href="https://sonarcloud.io/" target="_blank" rel="noopener noreferrer" class="thanks-card" id="thanks-sonarcloud">
+          <div class="thanks-card__inner">
+            <strong>SonarCloud</strong>
+            <p>Code quality and security analysis platform.</p>
+          </div>
+        </a>
+        <a href="https://www.codacy.com/" target="_blank" rel="noopener noreferrer" class="thanks-card" id="thanks-codacy">
+          <div class="thanks-card__inner">
+            <strong>Codacy</strong>
+            <p>Automated code review and quality monitoring.</p>
+          </div>
+        </a>
+        <a href="https://snyk.io/" target="_blank" rel="noopener noreferrer" class="thanks-card" id="thanks-snyk">
+          <div class="thanks-card__inner">
+            <strong>Snyk</strong>
+            <p>Security vulnerability scanning and dependency monitoring.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: 70px;
+  background: var(--gradient-hero);
+  overflow: hidden;
+}
+
+.hero__glow {
+  width: 600px; height: 600px;
+  top: -100px; left: -100px;
+}
+
+.hero__glow-2 {
+  width: 500px; height: 500px;
+  bottom: -100px; right: -50px;
+  opacity: 0.08;
+}
+
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__title {
+  max-width: 780px;
+  color: var(--clr-white);
+}
+
+.hero__subtitle {
+  max-width: 600px;
+  font-size: 1.1rem;
+  color: var(--clr-text-dim);
+}
+
+.hero__subtitle strong { color: var(--clr-text); }
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.hero__stats {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 1.5rem 2.5rem;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+}
+
+.hero__stat { text-align: center; }
+
+.hero__stat-num {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.hero__stat-label {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--clr-text-dim);
+  margin-top: 0.15rem;
+}
+
+.hero__stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--clr-border);
+  flex-shrink: 0;
+}
+
+/* ===== Libraries grid ===== */
+.libs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.lib-card { display: flex; flex-direction: column; gap: 1rem; }
+
+.lib-card__icon {
+  width: 54px; height: 54px;
+  border-radius: var(--radius-md);
+  background: rgba(0,168,150,0.12);
+  border: 1px solid rgba(0,168,150,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-color, var(--clr-accent));
+  flex-shrink: 0;
+}
+
+.lib-card__name {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.lib-card__codename {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--clr-white);
+}
+
+.lib-card__artifact {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--clr-accent);
+  background: rgba(0,168,150,0.1);
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.lib-card__desc { font-size: 0.9rem; flex: 1; }
+
+.lib-card__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.lib-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--clr-border);
+  margin-top: auto;
+}
+
+.lib-card__stars { font-size: 0.82rem; color: var(--clr-text-dim); }
+
+/* ===== Section alt ===== */
+.section-alt {
+  background: var(--clr-bg-2);
+  border-top: 1px solid var(--clr-border);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+/* ===== Quality grid ===== */
+.quality-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.quality-item {
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--clr-border);
+  background: var(--gradient-card);
+  transition: border-color var(--transition), transform var(--transition);
+  text-align: center;
+}
+
+.quality-item:hover {
+  border-color: rgba(0,168,150,0.4);
+  transform: translateY(-3px);
+}
+
+.quality-icon {
+  width: 64px; height: 64px;
+  margin: 0 auto 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(0,168,150,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-accent);
+}
+
+.quality-item h3 {
+  font-size: 1.05rem;
+  color: var(--clr-white);
+  margin-bottom: 0.5rem;
+}
+
+.quality-item p { font-size: 0.88rem; margin-bottom: 1rem; }
+
+.quality-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--clr-accent);
+}
+
+/* ===== Tools grid ===== */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.tool-card {
+  display: block;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--clr-border);
+  background: var(--clr-bg-card);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.tool-card:hover {
+  border-color: rgba(0,168,150,0.4);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+
+.tool-card__header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.tool-card__number {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--clr-teal-400);
+  background: rgba(0,168,150,0.12);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.tool-card h3 { font-size: 1rem; color: var(--clr-white); }
+.tool-card p  { font-size: 0.88rem; }
+
+/* ===== Thanks grid ===== */
+.thanks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.thanks-card {
+  display: block;
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--clr-border);
+  background: var(--clr-bg-card);
+  padding: 1.5rem;
+  transition: all var(--transition);
+}
+
+.thanks-card:hover {
+  border-color: rgba(0,168,150,0.35);
+  transform: translateY(-3px);
+}
+
+.thanks-card strong { display: block; font-size: 1rem; color: var(--clr-white); margin-bottom: 0.5rem; }
+.thanks-card p { font-size: 0.86rem; }
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  .hero__stats { gap: 1.25rem; padding: 1.25rem 1.5rem; }
+  .hero__stat-divider { display: none; }
+}
+</style>

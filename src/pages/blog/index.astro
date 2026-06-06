@@ -1,0 +1,131 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+
+// Read all .md files from src/content/blog/
+const allPosts = await Astro.glob('../../content/blog/*.md');
+
+// Sort by pubDate descending
+const posts = allPosts
+  .map(post => ({
+    ...post.frontmatter,
+    url: `/blog/${post.file.split('/').pop().replace('.md', '')}/`,
+  }))
+  .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+---
+<PageLayout
+  title="Blog"
+  description="News, release notes and articles from Fugerit Coding Org."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge">Blog</span>
+      <h1>News &amp; Updates</h1>
+      <p>Release notes, articles and announcements from the Fugerit Coding Org.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container blog-layout">
+      <div class="blog-list">
+        {posts.length === 0 ? (
+          <p class="text-dim">No posts yet. Check back soon!</p>
+        ) : (
+          posts.map(post => (
+            <article class="blog-card card" id={`post-${post.title.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'')}`}>
+              <div class="blog-card__meta">
+                <time datetime={post.pubDate} class="blog-card__date">
+                  {new Date(post.pubDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+                </time>
+                <span class="blog-card__author">by {post.author}</span>
+              </div>
+              <h2 class="blog-card__title">
+                <a href={post.url}>{post.title}</a>
+              </h2>
+              <p class="blog-card__excerpt">{post.description}</p>
+              <div class="blog-card__footer">
+                <div class="blog-card__tags">
+                  {post.tags?.map((tag: string) => (
+                    <span class="badge">{tag}</span>
+                  ))}
+                </div>
+                <a href={post.url} class="blog-card__read-more">Read more →</a>
+              </div>
+            </article>
+          ))
+        )}
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .page-hero {
+    padding: 9rem 0 4rem;
+    background: var(--gradient-hero);
+    border-bottom: 1px solid var(--clr-border);
+    text-align: center;
+  }
+  .page-hero .badge { margin-bottom: 1rem; }
+  .page-hero h1 { color: var(--clr-white); margin-bottom: 1rem; }
+  .page-hero p { font-size: 1.05rem; max-width: 520px; margin: 0 auto; }
+
+  .blog-layout { max-width: 780px; margin: 0 auto; }
+
+  .blog-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .blog-card { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .blog-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .blog-card__date {
+    font-size: 0.82rem;
+    color: var(--clr-accent);
+    font-weight: 600;
+    font-family: var(--font-mono);
+  }
+
+  .blog-card__author {
+    font-size: 0.8rem;
+    color: var(--clr-text-dim);
+  }
+
+  .blog-card__title {
+    font-size: 1.3rem;
+  }
+
+  .blog-card__title a {
+    color: var(--clr-white);
+    transition: color var(--transition);
+  }
+
+  .blog-card__title a:hover { color: var(--clr-accent); }
+
+  .blog-card__excerpt { font-size: 0.92rem; }
+
+  .blog-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--clr-border);
+    margin-top: 0.25rem;
+  }
+
+  .blog-card__tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+  .blog-card__read-more {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--clr-accent);
+    white-space: nowrap;
+  }
+
+  .blog-card__read-more:hover { color: var(--clr-teal-400); }
+</style>

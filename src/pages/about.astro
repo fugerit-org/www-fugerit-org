@@ -1,0 +1,237 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+<PageLayout
+  title="About"
+  description="About Fugerit Coding Org — an Italian open source organization creating Java libraries and tools since 2014."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge">About</span>
+      <h1>Fugerit Coding Org</h1>
+      <p>An open source Java development organization from Italy.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container about-layout">
+
+      <!-- MAIN CONTENT -->
+      <div class="about-content">
+        <div class="about-block">
+          <h2>Our Mission</h2>
+          <p>
+            The main purpose of <strong>Fugerit Coding Org</strong> is to create simple, well-tested libraries
+            and tools that make Java development easier, faster, and more reliable.
+          </p>
+          <p>
+            We believe great software is built on great foundations. Instead of reinventing the wheel,
+            we stand on the shoulders of proven open source projects (Apache FOP, Apache POI, Freemarker,
+            and many others) and build a coherent layer that simplifies their use.
+          </p>
+        </div>
+
+        <div class="about-block">
+          <h2>What We Build</h2>
+          <p>There are three main categories of projects hosted by Fugerit Coding Org:</p>
+          <ol class="about-list">
+            <li>
+              <strong>Core libraries</strong> — foundational multi-module Maven projects:
+              fj-bom, fj-lib (Jupiter), fj-doc (Venus), fj-daogen (Mars), fj-universe.
+            </li>
+            <li>
+              <strong>Tools</strong> — purpose-built command-line tools and Maven plugins for
+              specific tasks: OpenAPI documentation, SQL export, GraalVM native image support,
+              GitHub issue export.
+            </li>
+            <li>
+              <strong>Documentation &amp; Quickstarts</strong> — ready-to-run examples and guides
+              to help you get started quickly.
+            </li>
+          </ol>
+        </div>
+
+        <div class="about-block">
+          <h2>Quality Commitment</h2>
+          <p>
+            All projects are continuously monitored by <a href="https://sonarcloud.io/organizations/fugerit-org/projects" target="_blank" rel="noopener noreferrer">SonarCloud</a>
+            for code quality and security issues. Every library is released under the permissive
+            <strong>Apache License 2.0</strong> and published to Maven Central.
+          </p>
+          <p>
+            Most projects target <strong>Java 8+</strong> for maximum compatibility, while newer
+            modules take advantage of modern Java features where appropriate.
+          </p>
+        </div>
+
+        <div class="about-block">
+          <h2>Contact</h2>
+          <p>
+            Questions, suggestions, or collaboration proposals are always welcome.
+            Reach out via email or open an issue on GitHub.
+          </p>
+          <div class="about-ctas">
+            <a href="mailto:d@fugerit.org" class="btn btn-primary" id="contact-email-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              d@fugerit.org
+            </a>
+            <a href="https://github.com/fugerit-org" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="about-github-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub Org
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="about-sidebar">
+        <div class="sidebar-card">
+          <h4>Organization</h4>
+          <dl class="about-dl">
+            <dt>Name</dt>
+            <dd>Fugerit Coding Org</dd>
+            <dt>Location</dt>
+            <dd>Italy 🇮🇹</dd>
+            <dt>License</dt>
+            <dd>Apache-2.0</dd>
+            <dt>Repositories</dt>
+            <dd>113+</dd>
+            <dt>Primary Language</dt>
+            <dd>Java</dd>
+          </dl>
+        </div>
+
+        <div class="sidebar-card">
+          <h4>Resources</h4>
+          <ul class="sidebar-links">
+            <li><a href="https://repo1.maven.org/maven2/org/fugerit/java/" target="_blank" rel="noopener noreferrer" id="release-repo-link">Release Repository ↗</a></li>
+            <li><a href="https://oss.sonatype.org/content/repositories/snapshots/org/fugerit/java/" target="_blank" rel="noopener noreferrer" id="snapshot-repo-link">Snapshot Repository ↗</a></li>
+            <li><a href="https://sonarcloud.io/organizations/fugerit-org/projects" target="_blank" rel="noopener noreferrer" id="sonar-org-link">SonarCloud Quality ↗</a></li>
+            <li><a href="http://github-org.fugerit.org/profile/credits.html" target="_blank" rel="noopener noreferrer" id="credits-link">Credits ↗</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card sidebar-thanks">
+          <h4>Special Thanks</h4>
+          <p>Proud recipients of open source support from:</p>
+          <ul class="sidebar-links">
+            <li>
+              <a href="https://www.jetbrains.com/" target="_blank" rel="noopener noreferrer" id="jetbrains-about-link">
+                JetBrains — OSS Community License ↗
+              </a>
+            </li>
+            <li>
+              <a href="https://sonarcloud.io/" target="_blank" rel="noopener noreferrer" id="sonarcloud-about-link">
+                SonarCloud ↗
+              </a>
+            </li>
+            <li>
+              <a href="https://www.codacy.com/" target="_blank" rel="noopener noreferrer" id="codacy-about-link">
+                Codacy ↗
+              </a>
+            </li>
+            <li>
+              <a href="https://snyk.io/" target="_blank" rel="noopener noreferrer" id="snyk-about-link">
+                Snyk ↗
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .page-hero {
+    padding: 9rem 0 4rem;
+    background: var(--gradient-hero);
+    border-bottom: 1px solid var(--clr-border);
+    text-align: center;
+  }
+  .page-hero .badge { margin-bottom: 1rem; }
+  .page-hero h1 { color: var(--clr-white); margin-bottom: 1rem; }
+  .page-hero p { font-size: 1.05rem; max-width: 520px; margin: 0 auto; }
+
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .about-content { display: flex; flex-direction: column; gap: 3rem; }
+
+  .about-block h2 { color: var(--clr-white); margin-bottom: 1rem; font-size: 1.4rem; }
+  .about-block p  { font-size: 0.95rem; margin-bottom: 0.75rem; }
+  .about-block p a { color: var(--clr-accent); }
+  .about-block p a:hover { text-decoration: underline; }
+
+  .about-list {
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .about-list li { font-size: 0.95rem; color: var(--clr-text-dim); }
+  .about-list li strong { color: var(--clr-text); }
+
+  .about-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+
+  /* Sidebar */
+  .about-sidebar {
+    position: sticky;
+    top: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .sidebar-card {
+    background: var(--clr-bg-card);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+  }
+
+  .sidebar-card h4 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--clr-text-dim);
+    margin-bottom: 1rem;
+  }
+
+  .about-dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+  }
+
+  dt { font-size: 0.82rem; color: var(--clr-text-dim); }
+  dd { font-size: 0.85rem; color: var(--clr-text); font-weight: 500; }
+
+  .sidebar-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .sidebar-links a {
+    font-size: 0.85rem;
+    color: var(--clr-text-dim);
+    transition: color var(--transition);
+  }
+
+  .sidebar-links a:hover { color: var(--clr-accent); }
+
+  .sidebar-thanks p { font-size: 0.82rem; margin-bottom: 0.75rem; }
+
+  @media (max-width: 900px) {
+    .about-layout { grid-template-columns: 1fr; }
+    .about-sidebar { position: static; }
+  }
+</style>

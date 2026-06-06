@@ -1,0 +1,124 @@
+---
+const navLinks = [
+  { label: 'Home',     href: '/' },
+  { label: 'Projects', href: '/projects/' },
+  { label: 'Tools',    href: '/tools/' },
+  { label: 'Blog',     href: '/blog/' },
+  { label: 'About',    href: '/about/' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="navbar" id="site-navbar">
+  <a href="/" class="navbar__brand" aria-label="Fugerit Coding Org Home">
+    <img src="/fugerit-logo.svg" alt="Fugerit logo" class="navbar__logo" width="38" height="38" />
+    <span class="navbar__name">fugerit<span>.org</span></span>
+  </a>
+
+  <nav aria-label="Main navigation">
+    <ul class="navbar__nav">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class={currentPath === link.href || currentPath.startsWith(link.href) && link.href !== '/' ? 'active' : ''}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <div class="navbar__cta">
+    <a href="https://github.com/fugerit-org" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="github-nav-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+  </div>
+
+  <button class="navbar__hamburger" id="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <nav>
+    <ul>
+      {navLinks.map(link => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+      <li>
+        <a href="https://github.com/fugerit-org" target="_blank" rel="noopener noreferrer">
+          GitHub ↗
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<style>
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 70px; left: 0; right: 0; bottom: 0;
+    z-index: 99;
+    background: rgba(10, 15, 20, 0.97);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    overflow-y: auto;
+  }
+
+  .mobile-nav.open { display: block; }
+
+  .mobile-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mobile-nav a {
+    display: block;
+    padding: 1rem 1.25rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--clr-text);
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    transition: all var(--transition);
+  }
+
+  .mobile-nav a:hover {
+    border-color: var(--clr-border);
+    color: var(--clr-accent);
+    background: rgba(0,168,150,0.08);
+  }
+</style>
+
+<script>
+  const hamburger = document.getElementById('hamburger-btn');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  hamburger?.addEventListener('click', () => {
+    const isOpen = mobileNav?.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    mobileNav?.setAttribute('aria-hidden', String(!isOpen));
+  });
+
+  // Scroll effect on navbar
+  const navbar = document.getElementById('site-navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+  });
+</script>
