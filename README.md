@@ -2,11 +2,15 @@
 
 Source code for the official **Fugerit Coding Org** website, deployed at [www.fugerit.org](https://www.fugerit.org).
 
-Built with [Astro 4](https://astro.build) and hosted on GitHub Pages.
+Built with [Astro 6](https://astro.build) and hosted on GitHub Pages.
+
+## 📋 Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md) for the full history of changes.
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Astro 4 (static site generator)
+- **Framework**: Astro 6 (static site generator)
 - **Styling**: Vanilla CSS with custom dark design system
 - **Deployment**: GitHub Actions → GitHub Pages
 - **Domain**: Custom domain via CNAME (`www.fugerit.org`)
@@ -76,23 +80,7 @@ Content goes here...
 
 The filename (without `.md`) becomes the URL slug: `src/content/blog/my-post.md` → `/blog/my-post/`
 
-## 🌐 DNS Configuration
-
-For `www.fugerit.org` to resolve to GitHub Pages, configure these DNS records:
-
-| Type  | Name | Value                  |
-|-------|------|------------------------|
-| A     | @    | 185.199.108.153        |
-| A     | @    | 185.199.109.153        |
-| A     | @    | 185.199.110.153        |
-| A     | @    | 185.199.111.153        |
-| CNAME | www  | fugerit-org.github.io  |
-
 Then in the GitHub repository settings → Pages → Custom domain → enter `www.fugerit.org`.
-
-## 📋 Changelog
-
-See [CHANGELOG.md](./CHANGELOG.md) for the full history of changes.
 
 ## 📄 License
 

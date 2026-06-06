@@ -1,14 +1,15 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
 
-// Read all .md files from src/content/blog/
-const allPosts = await Astro.glob('../../content/blog/*.md');
+// Read all posts from content collections
+const allPosts = await getCollection('blog');
 
 // Sort by pubDate descending
 const posts = allPosts
   .map(post => ({
-    ...post.frontmatter,
-    url: `/blog/${post.file.split('/').pop().replace('.md', '')}/`,
+    ...post.data,
+    url: `/blog/${post.id}/`,
   }))
   .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
 ---

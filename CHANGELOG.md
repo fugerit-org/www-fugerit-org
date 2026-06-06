@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- New static website built with [Astro 4](https://astro.build) and deployed on GitHub Pages
+- New static website built with [Astro 6](https://astro.build) and deployed on GitHub Pages
   - Homepage with hero section, core libraries overview, quality badges, tools preview and credits
   - `/projects/` page with detailed descriptions of all core libraries (fj-bom, fj-lib, fj-doc, fj-daogen, fj-universe)
   - `/tools/` page with detailed descriptions of all developer tools (OpenAPI Doc Tool, Query Export Tool, GraalVM Native Helper, GitHub Issue Export, freemarker-native)

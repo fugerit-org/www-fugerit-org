@@ -1,17 +1,18 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const posts = await Astro.glob('../../content/blog/*.md');
+  const posts = await getCollection('blog');
   return posts.map(post => ({
-    params: { slug: post.file.split('/').pop().replace('.md', '') },
+    params: { slug: post.id },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-const { title, description, pubDate, author, tags } = post.frontmatter;
-const { Content } = post;
+const { title, description, pubDate, author, tags } = post.data;
+const { Content } = await render(post);
 
 const formattedDate = new Date(pubDate).toLocaleDateString('en-GB', {
   day: 'numeric', month: 'long', year: 'numeric'
