@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+
+	/*
+	 * @(#)daogen-config-1-0.xsd
+	 *
+	 * @project    : fj-daogen
+	 * @creation   : 2020-11-12
+	 * @version    : 1.0.0-rc.11 (2025-11-23)
+	 *
+	 * XSD for fugerit daogen configuration
+	 */
+	
+The entry point for daogen-config documentation is : https://marsdocs.fugerit.org/src/docs/config/config.html
+	
+<daogen-config
+	xmlns="http://daogen.fugerit.org"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://daogen.fugerit.org https://www.fugerit.org/data/java/doc/xsd/daogen-config-1-0.xsd" > 	
+</daogen-config>	
+	
+-->
+<xsd:schema xmlns='http://www.w3.org/2000/10/XMLSchema'
+	targetNamespace='http://daogen.fugerit.org'
+	xmlns:daogen="http://daogen.fugerit.org"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+
+	<xsd:element name="daogen-config" type="daogen:daogenConfigType">
+		<xsd:annotation>
+			<xsd:documentation>Reference daogen-config.xsd documentation for Mars - Fugerit DAO Generation Framework (fj-daogen).</xsd:documentation>
+			<xsd:documentation>The entry point for daogen-config configuration is https://marsdocs.fugerit.org/docs/dao_gen.html</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+	<xsd:complexType name="daogenConfigType">
+		<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+			<xsd:element ref="daogen:relation" maxOccurs="unbounded" minOccurs="0"/>
+			<xsd:element ref="daogen:entity" maxOccurs="unbounded" minOccurs="0"/>
+		</xsd:sequence>	
+		<xsd:attribute type="xsd:string" name="base-src-folder" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The base source folder to use for generating the code (for example '.', or ${project.basedir} in maven), if not provided will default to current directory (.)</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="database-type" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The database type (currently accepted values are : 'oracle', 'mysql', 'postres')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="gen-version" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The version that will be added to all generated code. (in javadoc comments or where applicable).</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="gen-author" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The author that will be added to all generated code, for. (in javadoc comments or where applicable).</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="src-main-java" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Relative path to 'base-src-folder' attribute. The directory for main java code. (for instance 'src/main/java' for maven standard layout).</xsd:documentation>
+				<xsd:documentation>It will be used by the relevant generators as output folder.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="src-test-java" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Relative path to 'base-src-folder' attribute. The directory for test java code. (for instance 'src-test-java' for maven standard layout).</xsd:documentation>
+				<xsd:documentation>It will be used by the relevant generators as output folder.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="src-main-resources" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Relative path to 'base-src-folder' attribute. The directory for main java resources. (for instance 'src/main/resources' for maven standard layout).</xsd:documentation>
+				<xsd:documentation>It will be used by the relevant generators as output folder.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="src-test-resources" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Relative path to 'base-src-folder' attribute. The directory for test java resources. (for instance 'src/test/resources' for maven standard layout).</xsd:documentation>
+				<xsd:documentation>It will be used by the relevant generators as output folder.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="src-doc-openapi" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Relative path to 'base-src-folder' attribute. The directory for openapi documentation. (for instance 'src/main/doc/openapi_rest').</xsd:documentation>
+				<xsd:documentation>It will be used by the relevant generators as output folder.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="relations-last" use="optional" default="false">
+			<xsd:annotation>
+				<xsd:documentation>'true' if the entities should be generated at the end.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="src-helpers" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Relative path to 'base-src-folder' attribute. The directory helper java files. (default to 'src-main-java').</xsd:documentation>
+				<xsd:documentation>It will be used by the relevant generators as output folder .</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="src-mvn-generated-sources" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Relative path to 'base-src-folder' attribute. The directory for maven plugin generated file. mainly to be used by fj-daogen-maven-plugin.</xsd:documentation>
+				<xsd:documentation>It will be used by the relevant generators as output folder .</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="class-config" use="optional" default="cl://config/daogen_default_class_config.xml">
+			<xsd:annotation>
+				<xsd:documentation>The class mapping for DaoGen classes. It will be default to 'cl://config/daogen_default_class_config.xml'.</xsd:documentation>
+				<xsd:documentation>It is usually safe to keep the default.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="type-mapper" use="optional" default="org.fugerit.java.daogen.base.config.DaogenTypeMapper">
+			<xsd:annotation>
+				<xsd:documentation>The type mapper. It will be default to 'org.fugerit.java.daogen.base.config.DaogenTypeMapper'.</xsd:documentation>
+				<xsd:documentation>It is usually safe to keep the default.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="type-map-config" use="optional" default="cl://config/daogen_default_type_mapping.xml">
+			<xsd:annotation>
+				<xsd:documentation>The type mapper config. It will default to 'cl://config/daogen_default_type_mapping.xml'.</xsd:documentation>
+				<xsd:documentation>It is usually safe to keep the default.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="generator-catalog" use="optional" default="cl://config/default-generator-catalog.xml">
+			<xsd:annotation>
+				<xsd:documentation>The generator catalog. It will be default to 'cl://config/default-generator-catalog.xml'.</xsd:documentation>
+				<xsd:documentation>It is usually safe to keep the default.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="decorator-catalog" use="optional" default="cl://config/default-decorator-catalog.xml">
+			<xsd:annotation>
+				<xsd:documentation>The decorator catalog. It will be default to 'cl://config/default-decorator-catalog.xml'.</xsd:documentation>
+				<xsd:documentation>It is usually safe to keep the default.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="default-column-time-insert" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The default column to be used for 'insert' time. (e.g. 'DATE_INSERT').</xsd:documentation>
+				<xsd:documentation>Set this property only if you want a special handling of this column.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="default-column-time-update">
+			<xsd:annotation>
+				<xsd:documentation>The default column to be used for 'last update' time. (e.g. 'DATE_INSERT').</xsd:documentation>
+				<xsd:documentation>Set this property only if you want a special handling of this column.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="struct-prefix" use="optional" default="OBJ_">
+			<xsd:annotation>
+				<xsd:documentation>The prefix for java.sql.Struct classes, it will default to 'OBJ_'. Common alternative may be 'UT_' (for user type).</xsd:documentation>
+				<xsd:documentation>It is usually safe to keep the default.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="package-model" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The package to be used for model interfaces, for each entity.</xsd:documentation>
+				<xsd:documentation>(e.g. 'org.fugerit.java.daogen.sample.def.model').</xsd:documentation>
+				<xsd:documentation>The relevant generators and decorators will only run if this property is set.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="package-helper" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The package to be used for basic model implementation classes, for each entity.</xsd:documentation>
+				<xsd:documentation>(e.g. 'org.fugerit.java.daogen.sample.impl.helper').</xsd:documentation>
+				<xsd:documentation>The relevant generators and decorators will only run if this property is set.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="package-helper-microprofile" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The package to be used model helper on miprofile specification.</xsd:documentation>
+				<xsd:documentation>(e.g. 'org.fugerit.java.daogen.sample.impl.helper' or 'org.fugerit.java.daogen.sample.impl.microprofile').</xsd:documentation>
+				<xsd:documentation>The relevant generators and decorators will only run if this property is set.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="daogen:enabledDisabledType" name="disable-singleton" use="optional" default="disabled">
+			<xsd:annotation>
+				<xsd:documentation>If set to 'enabled' the singleton generation. (i.e. RSE DEFAULT field).</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="daogen:enabledDisabledType" name="dao-helper-ng-mode" use="optional" default="disabled">
+			<xsd:annotation>
+				<xsd:documentation>If set to 'enabled' the 'dao.helper.ng' property set will be selected.</xsd:documentation>
+				<xsd:documentation>NOTE: when enabled, Helper entities will not be made serializable.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="daogen:enabledDisabledType" name="dao-wrapper-ng-mode" use="optional" default="disabled">
+			<xsd:annotation>
+				<xsd:documentation>If set to 'enabled' the 'dao.wrapper.ng' property set will be selected.</xsd:documentation>
+				<xsd:documentation>NOTE: when enabled, Wrapper entities will not be made serializable.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="daogen:enabledDisabledType" name="dao-finder-ng-mode" use="optional" default="disabled">
+			<xsd:annotation>
+				<xsd:documentation>If set to 'enabled' the 'dao.finder.ng' property set will be selected.</xsd:documentation>
+				<xsd:documentation>NOTE: when enabled, Finder entities will not be made serializable.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="daogen:enabledDisabledType" name="dao-rest-ng-mode" use="optional" default="disabled">
+			<xsd:annotation>
+				<xsd:documentation>If set to 'enabled' the 'dao.rest.ng' property set will be selected.</xsd:documentation>
+				<xsd:documentation>NOTE: when enabled, Rest entities will not be made serializable.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="daogen:enabledDisabledType" name="type-mapper-time-ng" use="optional" default="disabled">
+			<xsd:annotation>
+				<xsd:documentation>If set to 'enabled' the model_ng property in type mapper is selected.</xsd:documentation>
+				<xsd:documentation>NOTE: when enabled, By default java.time.LocalDate/LocalTime/LocalDateTime will be used for model.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="package-struct" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The package to be used for database java.sql.String classes, for each entity.</xsd:documentation>
+				<xsd:documentation>(e.g. 'org.fugerit.java.daogen.sample.impl.struct').</xsd:documentation>
+				<xsd:documentation>The relevant generators and decorators will only by run if this property is set.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="package-rse" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The package to be used for database org.fugerit.java.core.db.dao.RSExtractor classes, for each entity.</xsd:documentation>
+				<xsd:documentation>(e.g. 'org.fugerit.java.daogen.sample.impl.rse').</xsd:documentation>
+				<xsd:documentation>The relevant generators and decorators will only by run if this property is set.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="package-facade-def" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The package to be used for DAO facade interfaces, for each entity.</xsd:documentation>
+				<xsd:documentation>(e.g. 'org.fugerit.java.daogen.sample.def.facade').</xsd:documentation>
+				<xsd:documentation>The relevant generators and decorators will only by run if this property is set.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="package-facade-data-impl" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The package to be used for DAO facade basic implementation, for each entity.</xsd:documentation>
+				<xsd:documentation>(e.g. 'org.fugerit.java.daogen.sample.impl.facade.data').</xsd:documentation>
+				<xsd:documentation>The relevant generators and decorators will only by run if this property is set.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="factory-def" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The fully qualified name to be used for DAO factory interface.</xsd:documentation>
+				<xsd:documentation>(e.g. 'org.fugerit.java.daogen.sample.def.facade.FugeritLogicFacade').</xsd:documentation>
+				<xsd:documentation>The relevant generators and decorators will only by run if this property is set.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="factory-data-impl" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The fully qualified name to be used for DAO factory basic implementation.</xsd:documentation>
+				<xsd:documentation>(e.g. 'org.fugerit.java.daogen.sample.impl.facade.data.FugeritDataLogicFacade').</xsd:documentation>
+				<xsd:documentation>The relevant generators and decorators will only by run if this property is set.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="package-rest-load" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The package to be used for a basic rest service implementation, for load methods, for each entity.</xsd:documentation>
+				<xsd:documentation>(e.g. 'org.fugerit.java.daogen.sample.impl.rest.load').</xsd:documentation>
+				<xsd:documentation>The relevant generators and decorators will only by run if this property is set.</xsd:documentation>
+				<xsd:documentation>NOTE: REST services generation is not recommended, if not as a starting stub.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="package-spring-rest-load" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The package to be used for a basic spring rest service implementation, for load methods, for each entity.</xsd:documentation>
+				<xsd:documentation>(e.g. 'org.fugerit.java.daogen.sample.impl.spring.rest.load').</xsd:documentation>
+				<xsd:documentation>The relevant generators and decorators will only by run if this property is set.</xsd:documentation>
+				<xsd:documentation>NOTE: REST services generation is not recommended, if not as a starting stub.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="package-junit4-model" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The package to be used for a basic junit 4 implementation, for each entity.</xsd:documentation>
+				<xsd:documentation>(e.g. 'org.fugerit.java.daogen.sample.junit4test.model').</xsd:documentation>
+				<xsd:documentation>The relevant generators and decorators will only by run if this property is set.</xsd:documentation>
+				<xsd:documentation>NOTE: The junit generation is a very simple stub to start with.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="package-junit5-model" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The package to be used for a basic junit 5 implementation, for each entity.</xsd:documentation>
+				<xsd:documentation>(e.g. 'org.fugerit.java.daogen.sample.junit5test.model').</xsd:documentation>
+				<xsd:documentation>The relevant generators and decorators will only by run if this property is set.</xsd:documentation>
+				<xsd:documentation>NOTE: The junit generation is a very simple stub to start with.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="graalvm-reflect-config" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Path to the reflect-config.json file to be created</xsd:documentation>
+				<xsd:documentation>(e.g. 'daogen-reflect-config.json').</xsd:documentation>
+				<xsd:documentation>Initial folder is defined by 'src-main-resources' property.</xsd:documentation>
+				<xsd:documentation>NOTE: Only one file for all the project will be created.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="base-rest-service" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The base class for REST services.</xsd:documentation>
+				<xsd:documentation>(e.g. 'org.fugerit.java.daogen.sample.helper.ServiceProviderHelper').</xsd:documentation>
+				<xsd:documentation>NOTE: REST services generation is not recommended, if not as a starting stub.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:anyURI" name="openapi_host" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The host to be used for openapi specification and implementation specification.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="openapi_path" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The path to be used for openapi specification and implementation specification.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="default-sequence" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The default sequence name to be used for the entities (it is possible to override it).</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="check-empty-interface" use="optional" default="0">
+			<xsd:annotation>
+				<xsd:documentation>If set to '1' will check if interfaces have no methods.</xsd:documentation>
+				<xsd:documentation>NOTE: currently ignored.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="daogen:jdkTargetVersionType" name="jdk-target-version" use="optional" default="8">
+			<xsd:annotation>
+				<xsd:documentation>The jdk target version.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="daogen:jeeTargetModeType" name="jee-target-mode" use="optional" default="javax">
+			<xsd:annotation>
+				<xsd:documentation>The enterprise edition target environment.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="use-statement-helper">
+			<xsd:annotation>
+				<xsd:documentation>Must be the full qualified name of an implementation of BiFunction%lt;PreparedStatement, DAOContext, PreparedStatement%gt;.</xsd:documentation>
+				<xsd:documentation>It can be used to set up custom PreparedStatement configuration, like setQueryTimeout().</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>	
+
+	
+
+	<xsd:element name='relation' type="daogen:relationType">
+		<xsd:annotation>
+			<xsd:documentation>Metadata for a relation between to entities to be generated.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+	<xsd:element name='entity' type="daogen:entityType">
+		<xsd:annotation>
+			<xsd:documentation>Metadata for an entity to be generated.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	
+	<xsd:element name='field' type="daogen:fieldType" >
+		<xsd:annotation>
+			<xsd:documentation>Metadata for a field in an entity.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	
+	<xsd:complexType name="relationType">
+		<xsd:attribute type="xsd:string" name="id" use="required">
+			<xsd:annotation>
+				<xsd:documentation>The id of the relation.</xsd:documentation>
+				<xsd:documentation>(e.g. 'userToAddress')</xsd:documentation>
+				<xsd:documentation>It will be used by all relevant generators as base name. (eventually converted with the proper case).</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="comment" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Comment for the relation.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="name" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The name of the relation.</xsd:documentation>
+				<xsd:documentation>(e.g. 'USER_ADDRESSES')</xsd:documentation>
+				<xsd:documentation>It will be used by all relevant generators as base name. (eventually converted with the proper case).</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="from" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The name of the entity from which the relation originate. (the model will contain the set method).</xsd:documentation>
+				<xsd:documentation>(e.g. 'PUBLIC.FUGERIT.USER')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="to" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The name of the entity to which the relation goes.</xsd:documentation>
+				<xsd:documentation>(e.g. 'PUBLIC.FUGERIT.ADDRESS')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="daogen:relationModeType" name="mode" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The mode of the relation, 'one' or 'many'.</xsd:documentation>
+				<xsd:documentation>(e.g. 'many')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="key" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The list of comma separated field ids to be used for mapping the relation.</xsd:documentation>
+				<xsd:documentation>(e.g. 'ID_USER')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+    </xsd:complexType>
+    
+ 	<xsd:simpleType name="relationModeType">
+		<xsd:annotation>
+			<xsd:documentation>The possible modes for a relation</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="one"></xsd:enumeration>
+			<xsd:enumeration value="many"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="enabledDisabledType">
+		<xsd:annotation>
+			<xsd:documentation>Property to set enabled/disabled, may be extended in future</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="enabled"></xsd:enumeration>
+			<xsd:enumeration value="disabled"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+ 	<xsd:simpleType name="jdkTargetVersionType">
+		<xsd:annotation>
+			<xsd:documentation>The target jdk version. currently possible values are '8', '11', '17', '21'.</xsd:documentation>
+			<xsd:documentation>Some code may be different based on the target version.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="8"></xsd:enumeration>
+			<xsd:enumeration value="11"></xsd:enumeration>
+			<xsd:enumeration value="17"></xsd:enumeration>
+			<xsd:enumeration value="21"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+ 	<xsd:simpleType name="jeeTargetModeType">
+		<xsd:annotation>
+			<xsd:documentation>The target enterprise edition, possible values are 'javax' and 'jakarta'.</xsd:documentation>
+			<xsd:documentation>See https://jakarta.ee/about/jesp/.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="javax"></xsd:enumeration>
+			<xsd:enumeration value="jakarta"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="entityType">
+		<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+			<xsd:element ref="daogen:field"/>
+		</xsd:sequence>
+		<xsd:attribute type="xsd:string" name="comments" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>The comment for the entity.</xsd:documentation>
+				<xsd:documentation>(e.g. 'Contains users data')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="id" use="required" >
+			<xsd:annotation>
+				<xsd:documentation>The id of the entity.</xsd:documentation>
+				<xsd:documentation>(e.g. 'PUBLIC.FUGERIT.USER')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="name" use="required" >
+			<xsd:annotation>
+				<xsd:documentation>The name of the entity (i.e. the database table).</xsd:documentation>
+				<xsd:documentation>(e.g. 'USER')</xsd:documentation>
+				<xsd:documentation>It will be used by all relevant generators as base name. (eventually converted with the proper case).</xsd:documentation>
+				<xsd:documentation>(e.g. the ModelGenerator will generate a 'ModelUser' interface.)</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="primaryKey" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>The primary of the entity. (list of comma separated field ids)</xsd:documentation>
+				<xsd:documentation>(e.g. 'ID')</xsd:documentation>
+				<xsd:documentation>The attribute is optional, but some methods will not be generated if not present.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="schema" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>The schema name for the entity. If present it will be prefixed to table name for query.</xsd:documentation>
+				<xsd:documentation>(e.g. 'FUGERIT')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="catalog" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>The catalog name for the entity. If present it will be prefixed to table name for query.</xsd:documentation>
+				<xsd:documentation>(e.g. 'PUBLIC')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="sequenceName" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>The sequence name for this entity. (it not present will default to global 'default-sequence')</xsd:documentation>
+				<xsd:documentation>(e.g. 'SEQ_USER')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="foreignKeys" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>Comma separated list of entity ids.</xsd:documentation>
+				<xsd:documentation>(e.g. 'PUBLIC.FUGERIT.USER')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="facadeMode" use="optional" default="complete">
+			<xsd:annotation>
+				<xsd:documentation>Facade mode, comma separated list of accepted values 'complete' (default), 'select', 'insert', 'delete', 'update', 'none'.</xsd:documentation>
+				<xsd:documentation>(e.g. 'complete')</xsd:documentation>
+				<xsd:documentation>It is usually safe to keep the default.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="mapToTable" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Map the entity to a different table.</xsd:documentation>
+				<xsd:documentation>(e.g. 'alt_entity_name')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>	
+
+	<xsd:complexType name="fieldType">
+		<xsd:attribute type="xsd:string" name="comments" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>The comment for the field.</xsd:documentation>
+				<xsd:documentation>(e.g. 'User system id')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="id" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>The id of the field.</xsd:documentation>
+				<xsd:documentation>(e.g. 'ID')</xsd:documentation>
+				<xsd:documentation>It will be used by all relevant generators as base name. (eventually converted with the proper case).</xsd:documentation>
+				<xsd:documentation>(e.g. the ModelGenerator will generate a 'getId()' and 'setId()' methods.)</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="javaType" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>The java type to be used for the field.</xsd:documentation>
+				<xsd:documentation>(e.g. 'java.lang.Long')</xsd:documentation>
+				<xsd:documentation>It will be used by all relevant generators.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="nullable" use="optional" default="yes">
+			<xsd:annotation>
+				<xsd:documentation>'yes' if the field is nullable, 'no' if not. default 'yes'</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:int" name="size" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>The size of the  field. (i.e'. the size of a varchar, generally not needed).</xsd:documentation>
+				<xsd:documentation>(e.g. '128')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:short" name="sqlType" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>The sql type as for java.sql.Types mapping.</xsd:documentation>
+				<xsd:documentation>(e.g. '5')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="sqlTypeName" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>The sql type name.</xsd:documentation>
+				<xsd:documentation>(e.g. 'BIGINT')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:boolean" name="udt" use="optional" default="true">
+			<xsd:annotation>
+				<xsd:documentation>Set to 'true' if the field must be included in user defined type mapping (struct).</xsd:documentation>
+				<xsd:documentation>(e.g. 'true')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="structType" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>Used to override default type in user defined type (struct).</xsd:documentation>
+				<xsd:documentation>(e.g. 'java.lang.Long')</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="virtual" use="optional" default="false">
+			<xsd:annotation>
+				<xsd:documentation>Virtual ('true') field will be included in model, but not in persistente (i.e. CRUD) operations.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="openapiExample" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>Example data for the field.</xsd:documentation>
+				<xsd:documentation>(e.g. '1')</xsd:documentation>
+				<xsd:documentation>It will be used by all relevant generators. (for instance MicroProfileSchemaWrapperGenerator)</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="openapiEnumeration" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>Comma separated enumeration of values. (normal comma escaped as {,})</xsd:documentation>
+				<xsd:documentation>(e.g. '0,1')</xsd:documentation>
+				<xsd:documentation>It will be used by all relevant generators. (for instance MicroProfileSchemaWrapperGenerator)</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="openapiFormat" use="optional" >
+			<xsd:annotation>
+				<xsd:documentation>OpenAPI format to use.</xsd:documentation>
+				<xsd:documentation>(e.g. 'int32')</xsd:documentation>
+				<xsd:documentation>It will be used by all relevant generators. (for instance MicroProfileSchemaWrapperGenerator)</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute type="xsd:string" name="databaseField" use="optional" default="false">
+			<xsd:annotation>
+				<xsd:documentation>The field name of DB; if not set equal to "id".</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>	
+
+</xsd:schema>
