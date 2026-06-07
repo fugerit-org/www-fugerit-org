@@ -23,6 +23,7 @@ www-fugerit-org/
 │   └── workflows/
 │       └── deploy.yml       # CI/CD: builds and deploys on push to main
 ├── public/
+│   ├── data/                # Static resources of the organization (e.g., schemas, XSD, DTD)
 │   ├── fugerit-logo.svg     # Site logo
 │   └── CNAME                # Custom domain configuration
 ├── src/
